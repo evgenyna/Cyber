@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+venv/
+
+
+# Claude
+.claude/
+
+# Logs
+logs/
+
+# Generated images
+server_screen.jpg
+client_screen.jpg
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+
+# Files
+*Doc2*
+example/
