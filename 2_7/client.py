@@ -1,5 +1,7 @@
 """
 Remote technician client.
+
+Author: Evgeny Hezi Naftaliev
 """
 import socket
 from protocol import *
@@ -10,10 +12,21 @@ SERVER_PORT = 20010
 
 
 def print_menu():
+    """
+    Print the available commands supported by the client.
+
+    Uses the `COMMANDS` tuple from `client_functions`.
+    """
     print('available commands: ' + ' | '.join(client_functions.COMMANDS))
 
 
 def main():
+    """
+    Create a TCP connection to the server and interactively send commands.
+
+    The function connects to `SERVER_IP:SERVER_PORT`, reads user input,
+    sends commands using `protocol.send_msg` and displays responses.
+    """
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         sock.connect((SERVER_IP, SERVER_PORT))

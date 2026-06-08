@@ -1,6 +1,9 @@
 """
 Server-side command handlers.
+
 All functions receive bytes and return bytes.
+
+Author: Evgeny Hezi Naftaliev
 """
 import os
 import shutil
@@ -94,10 +97,11 @@ def run_program(path_bytes):
         return FAIL + str(err).encode()
 
 
-def capture_screenshot(_):
+def capture_screenshot(payload):
     """
     Take a screenshot and save it on the server.
-    :param _: unused
+
+    :param payload: bytes payload sent by the client (unused)
     :return: OK or error bytes
     """
     if not _SCREENSHOT_AVAILABLE:
@@ -111,10 +115,11 @@ def capture_screenshot(_):
         return FAIL + str(err).encode()
 
 
-def send_photo(_):
+def send_photo(payload):
     """
     Read the saved screenshot and return its bytes.
-    :param _: unused
+
+    :param payload: bytes payload sent by the client (unused)
     :return: JPEG image bytes or error bytes
     """
     try:
@@ -127,10 +132,11 @@ def send_photo(_):
         return FAIL + str(err).encode()
 
 
-def get_hostname(_):
+def get_hostname(payload):
     """
     Return the server's hostname.
-    :param _: unused
+
+    :param payload: bytes payload sent by the client (unused)
     :return: hostname as bytes
     """
     return _socket.gethostname().encode()

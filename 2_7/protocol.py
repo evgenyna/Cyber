@@ -1,3 +1,9 @@
+"""
+Protocol helpers for length-prefixed messaging used by client/server.
+
+Author: Evgeny Hezi Naftaliev
+"""
+
 import struct
 import logging
 
@@ -11,6 +17,7 @@ def send_msg(sock, cmd, data):
     :param sock: connected socket
     :param cmd: command name as string
     :param data: command payload as bytes
+    :return: None
     """
     header_cmd = struct.pack(PACK_FORMAT, len(cmd))
     header_data = struct.pack(PACK_FORMAT, len(data))

@@ -1,5 +1,7 @@
 """
 Remote technician server.
+
+Author: Evgeny Hezi Naftaliev
 """
 import socket
 import os
@@ -26,6 +28,11 @@ CMD_HANDLERS = {
 
 
 def setup_logging():
+    """
+    Ensure log directory exists and configure the logging module.
+
+    :return: None
+    """
     os.makedirs('logs', exist_ok=True)
     logging.basicConfig(
         filename=LOG_FILE,
@@ -35,6 +42,13 @@ def setup_logging():
 
 
 def process_client(conn, addr):
+    """
+    Handle an accepted client connection and process commands.
+
+    :param conn: socket connection object
+    :param addr: client address tuple
+    :return: None
+    """
     logging.info('new connection from ' + str(addr))
     print('connected: ' + str(addr))
     try:
@@ -62,6 +76,12 @@ def process_client(conn, addr):
 
 
 def main():
+    """
+    Start the TCP server and accept incoming connections.
+
+    Binds to `IP:PORT` and delegates clients to `process_client`.
+    :return: None
+    """
     setup_logging()
     srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

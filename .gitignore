@@ -25,3 +25,18 @@ __pycache__/
 # Files
 *Doc2*
 example/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Test cache
+.pytest_cache/
+
+# OS
+.DS_Store
+
+# Misc
+*.log
+*.sqlite3
